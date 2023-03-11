@@ -1,2 +1,9 @@
 .Title {
+  display: grid;
+  place-content: center;
+  background: gray;
+  color: #293251;
+  text-transform: uppercase;
+  font-size: 1.6rem;
+  height: 15%;
 }
