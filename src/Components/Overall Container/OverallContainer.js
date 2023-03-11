@@ -1,5 +1,5 @@
-import LeftSection from "./LeftSection";
-import RightSection from "./RightSection";
+import LeftSection from "../Left Section/LeftSection";
+import RightSection from "../Right Section/RightSection";
 import "./OverallContainer.css";
 
 const OverallContainer = () => {
