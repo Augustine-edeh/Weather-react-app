@@ -1,0 +1,6 @@
+.ErrorMessage {
+  background: hsl(355, 70%, 91%);
+  color: #721c24;
+  font-size: 1.2rem;
+  height: 5%;
+}
