@@ -1,6 +1,7 @@
 .TemperatureDescription {
   display: grid;
   place-content: center;
-  flex: 1;
   background: red;
+  flex: 1;
+  font-size: 1.5rem;
 }

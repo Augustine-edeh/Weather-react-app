@@ -1,6 +1,17 @@
 .Temperature {
-  display: grid;
-  place-content: center;
+  /* display: grid;
+  place-content: center; */
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
   flex: 1;
   background: green;
+  padding-top: 0.5rem;
+}
+.Temperature p {
+  font-size: 2rem;
+}
+.Temperature span {
+  font-size: 3rem;
 }
