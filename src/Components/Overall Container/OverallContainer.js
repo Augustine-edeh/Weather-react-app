@@ -1,12 +1,12 @@
-import LeftSection from "../Left Section/LeftSection";
-import RightSection from "../Right Section/RightSection";
+import LeftSectionContainer from "../Left Section/LeftSectionContainer";
+import RightSectionContainer from "../Right Section/RightSectionContainer";
 import "./OverallContainer.css";
 
 const OverallContainer = () => {
   return (
     <main className="Main">
-      <LeftSection />
-      <RightSection />
+      <LeftSectionContainer />
+      <RightSectionContainer />
     </main>
   );
 };
