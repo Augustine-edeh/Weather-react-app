@@ -1,6 +1,11 @@
 import "./AdditionalInformation.css";
 
 const AdditionalInformation = () => {
-  return <p className="AdditionalInformation">AdditionalInformation</p>;
+  return (
+    <div className="AdditionalInformation">
+      <div class="flex-elements">Windspeed</div>
+      <div class="flex-elements">Humidity</div>
+    </div>
+  );
 };
 export default AdditionalInformation;

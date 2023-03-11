@@ -1,2 +1,6 @@
 .Temperature {
+  display: grid;
+  place-content: center;
+  flex: 1;
+  background: green;
 }

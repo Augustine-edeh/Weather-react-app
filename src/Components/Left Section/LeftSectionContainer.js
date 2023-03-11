@@ -4,16 +4,17 @@ import Icon from "./Icon";
 import Temperature from "./Temperature";
 import TemperatureDescription from "./TemperatureDescription";
 import AdditionalInformation from "./AdditionalInformation";
-import LeftSectionTop from "./LeftSectionTop";
 const LeftSection = () => {
   return (
     <section className="Left-section">
-      <LeftSectionTop>
+      <div class="Left-Section__top">
         <Title />
         <Icon />
-        <Temperature />
-        <TemperatureDescription />
-      </LeftSectionTop>
+        <div class="Left-section__flex">
+          <Temperature />
+          <TemperatureDescription />
+        </div>
+      </div>
       <AdditionalInformation />
     </section>
   );

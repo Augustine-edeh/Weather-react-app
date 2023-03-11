@@ -1,6 +1,6 @@
 import "./TemperatureDescription.css";
 
 const TemperatureDescription = () => {
-  return <p className="Temperature-Description">Temperature Description</p>;
+  return <p className="TemperatureDescription">Temperature Description</p>;
 };
 export default TemperatureDescription;

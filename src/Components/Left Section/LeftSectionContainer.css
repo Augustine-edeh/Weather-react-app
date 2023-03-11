@@ -1,4 +1,13 @@
 .Left-section {
   background: #d0dbe7;
+
   width: 38%;
+}
+.Left-Section__top {
+  height: 80%;
+}
+.Left-section__flex {
+  display: flex;
+  flex-direction: column;
+  height: 35%;
 }
