@@ -7,14 +7,14 @@ form {
   gap: 0.1rem;
   height: 100%;
 }
-input {
+.CitySearch input {
   width: 25rem;
   outline: none;
   font-size: 1.6rem;
   border-radius: 0.4rem 0 0 0.4rem;
   padding: 0 1rem;
 }
-input:focus {
+.CitySearch input:focus {
   outline: 0.05rem solid rgb(19, 95, 227);
 }
 form button {
