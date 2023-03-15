@@ -3,16 +3,25 @@ import "./LandingPage.css";
 const LandingPage = () => {
   return (
     <section className="LandingPage">
-      <div class="title">Weather App</div>
-      <hr class="hr-1" />
-      <section class="lower-sect">
-        <input type="search" class="input" placeholder="Enter city name" />
-        <div class="divider">
-          <hr class="hr-2" />
+      <div className="LandingPage__title">Weather App</div>
+      <hr className="hr-1" />
+      <section className="lower-sect">
+        <form className="city-search__form">
+          <input
+            type="search"
+            className="input"
+            placeholder="Enter city name"
+          />
+          <button type="submit" className="city-search__submit">
+            Search
+          </button>
+        </form>
+        <div className="divider">
+          <hr className="hr-2" />
           <span>or</span>
-          <hr class="hr-2" />
+          <hr className="hr-2" />
         </div>
-        <button type="button" class="get-location_button">
+        <button typae="button" className="get-location_button">
           Get weather for Device Location
         </button>
       </section>
