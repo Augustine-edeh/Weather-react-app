@@ -1,6 +1,14 @@
 import "./LandingPage.css";
 
 const LandingPage = () => {
+  const onCountrySearchHandler = () => {
+    // || Fetching weather data
+    fetch("https://restcountries.com/v3.1/name/nigeria")
+      // https://restcountries.com/v3.1/all
+      .then((response) => response.json())
+      .then((data) => console.log(data));
+  };
+
   return (
     <section className="LandingPage">
       <div className="LandingPage__title">Weather App</div>
@@ -12,7 +20,11 @@ const LandingPage = () => {
             className="input"
             placeholder="Enter city name"
           />
-          <button type="submit" className="city-search__submit">
+          <button
+            type="submit"
+            className="city-search__submit"
+            onClick={onCountrySearchHandler}
+          >
             Search
           </button>
         </form>
