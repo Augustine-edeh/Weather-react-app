@@ -1,7 +1,16 @@
 import "./LandingPage.css";
 
 const LandingPage = () => {
+  // || Prevent default-form-submission  function
+  const preventFormSubmit = () => {
+    document
+      .querySelector(".city-search__form")
+      .addEventListener("submit", (e) => e.preventDefault());
+  };
+
   const onCountrySearchHandler = () => {
+    // || Preventing the default submit event of the search-form
+    preventFormSubmit();
     // || Fetching weather data
     fetch("https://restcountries.com/v3.1/name/nigeria")
       // https://restcountries.com/v3.1/all
