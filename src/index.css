@@ -9,4 +9,5 @@ body {
   height: 100vh;
   background: linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6);
   font-family: "ubuntu", sans-serif;
+  user-select: none;
 }
