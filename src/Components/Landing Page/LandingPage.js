@@ -8,6 +8,25 @@ const LandingPage = () => {
       .addEventListener("submit", (e) => e.preventDefault());
   };
 
+  const getDeviceLocation = () => {
+    // || Callback function for successful retrieval of device position
+    const locationSuccessCallback = (position) => {
+      const { latitude, longitude } = position.coords;
+      console.log(latitude, longitude);
+    };
+
+    // || Callback function for unsuccessful retrieval of device position
+    const locationErrorCallback = (err) => {
+      console.log(`####: ${err.message}`);
+    };
+
+    // || Getting device location (Latitude and Longitude function) Function
+    navigator.geolocation.getCurrentPosition(
+      locationSuccessCallback,
+      locationErrorCallback
+    );
+  };
+
   const onCountrySearchHandler = () => {
     // || Preventing the default submit event of the search-form
     preventFormSubmit();
@@ -42,7 +61,11 @@ const LandingPage = () => {
           <span>or</span>
           <hr className="hr-2" />
         </div>
-        <button typae="button" className="get-location_button">
+        <button
+          typae="button"
+          className="get-location_button"
+          onClick={getDeviceLocation}
+        >
           Get weather for Device Location
         </button>
       </section>
