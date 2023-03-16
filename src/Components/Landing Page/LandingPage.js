@@ -30,9 +30,16 @@ const LandingPage = () => {
   const onCountrySearchHandler = () => {
     // || Preventing the default submit event of the search-form
     preventFormSubmit();
+
+    // || Logging the city-input value to the console
+    const cityName = document.querySelector(".input").value;
+
+    // || API Key
+    const APIKEY = "3ad3ba1e7be894670b88f65bf82f63d9";
+
     // || Fetching weather data
-    fetch("https://restcountries.com/v3.1/name/nigeria")
-      // https://restcountries.com/v3.1/all
+    let weatherURL = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${APIKEY}&units=metric`;
+    fetch(weatherURL)
       .then((response) => response.json())
       .then((data) => console.log(data));
   };
