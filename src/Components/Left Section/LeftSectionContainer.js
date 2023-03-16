@@ -7,7 +7,7 @@ import AdditionalInformation from "./AdditionalInformation";
 const LeftSection = () => {
   return (
     <section className="Left-section">
-      <div class="Left-Section__top">
+      <div className="Left-Section__top">
         <Title />
         <Icon />
         <div class="Left-section__flex">
