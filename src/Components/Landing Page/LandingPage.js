@@ -27,7 +27,7 @@ const LandingPage = () => {
     );
   };
 
-  const onCountrySearchHandler = () => {
+  const CitySearchHandler = () => {
     // || Preventing the default submit event of the search-form
     preventFormSubmit();
 
@@ -58,7 +58,7 @@ const LandingPage = () => {
           <button
             type="submit"
             className="city-search__submit"
-            onClick={onCountrySearchHandler}
+            onClick={CitySearchHandler}
           >
             Search
           </button>
