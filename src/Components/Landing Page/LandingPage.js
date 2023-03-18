@@ -2,6 +2,8 @@ import { useState } from "react";
 import "./LandingPage.css";
 
 const LandingPage = () => {
+  // || API Key
+  const APIKEY = "3ad3ba1e7be894670b88f65bf82f63d9";
   // || Declaring state value for Weather Data
   const [weatherData, setWeatherData] = useState({});
   // || Declaring state value for city value
@@ -20,17 +22,37 @@ const LandingPage = () => {
     const locationSuccessCallback = (position) => {
       const { latitude, longitude } = position.coords;
       console.log(latitude, longitude);
+
+      const locationWeatherURL = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${APIKEY}`;
+
+      // || Getting the weather for device position gotten
+      fetch(locationWeatherURL)
+        .then((response) => response.json())
+        .then((data) => console.log(data))
+        .catch((error) => console.log(error));
     };
 
     // || Callback function for unsuccessful retrieval of device position
     const locationErrorCallback = (err) => {
-      console.log(`####: ${err.message}`);
+      const errors = {
+        1: "Permission denied",
+        2: "Position unavailable",
+        3: "Request timeout",
+      };
+      console.log(errors[err.code]);
+    };
+    // || Options object for geolocation API call
+    const geolocationOptions = {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0,
     };
 
     // || Getting device location (Latitude and Longitude function) Function
     navigator.geolocation.getCurrentPosition(
       locationSuccessCallback,
-      locationErrorCallback
+      locationErrorCallback,
+      geolocationOptions
     );
   };
 
@@ -40,9 +62,6 @@ const LandingPage = () => {
 
     // || Logging the city-input value to the console
     const cityName = document.querySelector(".input").value;
-
-    // || API Key
-    const APIKEY = "3ad3ba1e7be894670b88f65bf82f63d9";
 
     // || Fetching weather data
     let weatherURL = `https://api.openweathermap.org/data/2.5/weather?q=${cityValue}&appid=${APIKEY}&units=metric`;
