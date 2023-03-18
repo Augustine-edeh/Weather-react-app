@@ -60,9 +60,6 @@ const LandingPage = () => {
     // || Preventing the default submit event of the search-form
     preventFormSubmit();
 
-    // || Logging the city-input value to the console
-    const cityName = document.querySelector(".input").value;
-
     // || Fetching weather data
     let cityWeatherURL = `https://api.openweathermap.org/data/2.5/weather?q=${cityValue}&appid=${APIKEY}&units=metric`;
     fetch(cityWeatherURL)
