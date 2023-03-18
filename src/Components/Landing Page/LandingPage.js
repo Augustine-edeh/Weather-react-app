@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./LandingPage.css";
 
-const LandingPage = () => {
+const LandingPage = (props) => {
   // || API Key
   const APIKEY = "3ad3ba1e7be894670b88f65bf82f63d9";
   // || Declaring state value for Weather Data
@@ -69,6 +69,7 @@ const LandingPage = () => {
         setCityValue("");
         setWeatherData(dataRetrieved);
         console.log(dataRetrieved);
+        props.onGetWeather(dataRetrieved);
       })
       .catch((error) => {
         // || Two way binding for the city search input value

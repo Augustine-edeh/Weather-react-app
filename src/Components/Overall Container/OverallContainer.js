@@ -3,7 +3,11 @@ import RightSectionContainer from "../Right Section/RightSectionContainer";
 import LandingPage from "../Landing Page/LandingPage";
 import "./OverallContainer.css";
 
-const OverallContainer = () => {
+const OverallContainer = (props) => {
+  const weathergotten = (data) => {
+    console.log(data);
+  };
+
   if (false) {
     return (
       <main className="Main">
@@ -12,7 +16,7 @@ const OverallContainer = () => {
       </main>
     );
   } else {
-    return <LandingPage />;
+    return <LandingPage onGetWeather={weathergotten} />;
   }
   // return (
   //
