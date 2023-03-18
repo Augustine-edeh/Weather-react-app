@@ -14,6 +14,7 @@ const LandingPage = () => {
       .addEventListener("submit", (e) => e.preventDefault());
   };
 
+  // || Get Device Location function
   const getDeviceLocation = () => {
     // || Callback function for successful retrieval of device position
     const locationSuccessCallback = (position) => {
@@ -66,7 +67,7 @@ const LandingPage = () => {
         <form className="city-search__form">
           <input
             value={cityValue}
-            type="search"
+            type="text"
             className="input"
             placeholder="Enter city name"
             onChange={(event) => setCityValue(event.target.value)}
