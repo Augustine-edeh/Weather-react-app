@@ -35,11 +35,11 @@ const LandingPage = () => {
     // || Callback function for unsuccessful retrieval of device position
     const locationErrorCallback = (err) => {
       const errors = {
-        1: "Permission denied",
+        1: "Permission denied. Please grant access to device location and try again.",
         2: "Position unavailable",
         3: "Request timeout",
       };
-      console.log(errors[err.code]);
+      window.alert(errors[err.code]);
     };
     // || Options object for geolocation API call
     const geolocationOptions = {
