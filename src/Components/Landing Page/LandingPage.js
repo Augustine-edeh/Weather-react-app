@@ -64,8 +64,8 @@ const LandingPage = () => {
     const cityName = document.querySelector(".input").value;
 
     // || Fetching weather data
-    let weatherURL = `https://api.openweathermap.org/data/2.5/weather?q=${cityValue}&appid=${APIKEY}&units=metric`;
-    fetch(weatherURL)
+    let cityWeatherURL = `https://api.openweathermap.org/data/2.5/weather?q=${cityValue}&appid=${APIKEY}&units=metric`;
+    fetch(cityWeatherURL)
       .then((response) => response.json())
       .then((dataRetrieved) => {
         // || Two way binding for the city search input value
