@@ -49,7 +49,13 @@ const LandingPage = () => {
       .then((response) => response.json())
       .then((dataRetrieved) => {
         setWeatherData(dataRetrieved);
-        console.log(dataRetrieved);
+        // console.log(dataRetrieved);
+        // || Two way binding for the city search input value
+        setCityValue("");
+      })
+      .catch((error) => {
+        // || Two way binding for the city search input value
+        setCityValue("");
       });
   };
   return (
