@@ -1,7 +1,13 @@
+import { useState } from "react";
 import "./LandingPage.css";
 
 const LandingPage = () => {
-  // || Prevent default-form-submission  function
+  // || Declaring state value for Weather Data
+  const [weatherData, setWeatherData] = useState({});
+  // || Declaring state value for city value
+  const [cityValue, setCityValue] = useState("");
+
+  // || Prevent default-form-submission function
   const preventFormSubmit = () => {
     document
       .querySelector(".city-search__form")
@@ -38,12 +44,14 @@ const LandingPage = () => {
     const APIKEY = "3ad3ba1e7be894670b88f65bf82f63d9";
 
     // || Fetching weather data
-    let weatherURL = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${APIKEY}&units=metric`;
+    let weatherURL = `https://api.openweathermap.org/data/2.5/weather?q=${cityValue}&appid=${APIKEY}&units=metric`;
     fetch(weatherURL)
       .then((response) => response.json())
-      .then((data) => console.log(data));
+      .then((dataRetrieved) => {
+        setWeatherData(dataRetrieved);
+        console.log(dataRetrieved);
+      });
   };
-
   return (
     <section className="LandingPage">
       <div className="LandingPage__title">Weather App</div>
@@ -51,9 +59,11 @@ const LandingPage = () => {
       <section className="lower-sect">
         <form className="city-search__form">
           <input
+            value={cityValue}
             type="search"
             className="input"
             placeholder="Enter city name"
+            onChange={(event) => setCityValue(event.target.value)}
           />
           <button
             type="submit"
