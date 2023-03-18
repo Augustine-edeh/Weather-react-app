@@ -49,10 +49,10 @@ const LandingPage = () => {
     fetch(weatherURL)
       .then((response) => response.json())
       .then((dataRetrieved) => {
-        setWeatherData(dataRetrieved);
-        // console.log(dataRetrieved);
         // || Two way binding for the city search input value
         setCityValue("");
+        setWeatherData(dataRetrieved);
+        console.log(dataRetrieved);
       })
       .catch((error) => {
         // || Two way binding for the city search input value
