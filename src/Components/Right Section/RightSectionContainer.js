@@ -7,7 +7,7 @@ const RightSectionContainer = (props) => {
     <section className="Right-section">
       <CitySearch />
       <ErrorMessage />
-      <Location />
+      <Location location={props.location} />
     </section>
   );
 };
