@@ -23,7 +23,7 @@ const LandingPage = (props) => {
       const { latitude, longitude } = position.coords;
       console.log(latitude, longitude);
 
-      const locationWeatherURL = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${APIKEY}`;
+      const locationWeatherURL = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${APIKEY}&units=metric`;
 
       // || Getting the weather for device position gotten
       fetch(locationWeatherURL)
