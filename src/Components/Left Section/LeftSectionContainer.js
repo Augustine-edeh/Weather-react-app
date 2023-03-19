@@ -4,18 +4,25 @@ import Icon from "./Icon";
 import Temperature from "./Temperature";
 import TemperatureDescription from "./TemperatureDescription";
 import AdditionalInformation from "./AdditionalInformation";
-const LeftSection = () => {
+const LeftSection = (props) => {
+  // console.log(props.weatherData);
+
   return (
     <section className="Left-section">
       <div className="Left-Section__top">
         <Title />
         <Icon />
         <div class="Left-section__flex">
-          <Temperature />
-          <TemperatureDescription />
+          <Temperature temperature={props.weatherData.main.temp} />
+          <TemperatureDescription
+            temperatureDescription={props.weatherData.weather[0].description}
+          />
         </div>
       </div>
-      <AdditionalInformation />
+      <AdditionalInformation
+        humidity={props.weatherData.main.humidity}
+        windSpeed={props.weatherData.wind.speed}
+      />
     </section>
   );
 };

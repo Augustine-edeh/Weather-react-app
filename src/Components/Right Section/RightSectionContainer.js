@@ -2,7 +2,7 @@ import CitySearch from "./CitySearch";
 import ErrorMessage from "./ErrorMessage";
 import Location from "./Location";
 import "./RightSectionContainer.css";
-const RightSectionContainer = () => {
+const RightSectionContainer = (props) => {
   return (
     <section className="Right-section">
       <CitySearch />

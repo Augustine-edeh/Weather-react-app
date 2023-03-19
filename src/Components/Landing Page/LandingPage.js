@@ -28,7 +28,15 @@ const LandingPage = (props) => {
       // || Getting the weather for device position gotten
       fetch(locationWeatherURL)
         .then((response) => response.json())
-        .then((data) => console.log(data))
+        .then((data) => {
+          setWeatherData(data);
+          console.log(data);
+
+          // || Lifting up the weatherData state only when the there is no error fetching the weather
+          if (data.cod === 200) {
+            props.onGetWeather(data);
+          }
+        })
         .catch((error) => console.log(error));
     };
 
@@ -69,7 +77,11 @@ const LandingPage = (props) => {
         setCityValue("");
         setWeatherData(dataRetrieved);
         console.log(dataRetrieved);
-        props.onGetWeather(dataRetrieved);
+
+        // || Lifting up the weatherData state only when the there is no error fetching the weather
+        if (dataRetrieved.cod === 200) {
+          props.onGetWeather(dataRetrieved);
+        }
       })
       .catch((error) => {
         // || Two way binding for the city search input value

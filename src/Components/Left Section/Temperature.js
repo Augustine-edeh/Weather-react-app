@@ -1,10 +1,10 @@
 import "./Temperature.css";
 
-const Temperature = () => {
+const Temperature = (props) => {
   return (
     <div className="Temperature">
       <p>
-        <span>{25}&deg;</span>C
+        <span>{props.temperature.toFixed()}&deg;</span>C
       </p>
     </div>
   );

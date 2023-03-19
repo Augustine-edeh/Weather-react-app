@@ -1,10 +1,10 @@
 import "./AdditionalInformation.css";
 
-const AdditionalInformation = () => {
+const AdditionalInformation = (props) => {
   return (
     <div className="AdditionalInformation">
-      <div class="flex-elements">Windspeed</div>
-      <div class="flex-elements">Humidity</div>
+      <div class="flex-elements">({props.windSpeed}Km/hr) Windspeed</div>
+      <div class="flex-elements">({props.humidity}%) Humidity</div>
     </div>
   );
 };
