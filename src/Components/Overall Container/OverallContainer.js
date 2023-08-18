@@ -21,22 +21,13 @@ const OverallContainer = (props) => {
 
   const [getWeatherSuccess, setGetWeatherSuccess] = useState(false);
 
-  if (getWeatherSuccess) {
-    return (
-      <main className="Main">
-        <LeftSectionContainer weatherData={weatherData} />
-        <RightSectionContainer
-          location={`${weatherData.name}, ${countryName}`}
-        />
-      </main>
-    );
-  } else {
-    return (
-      <LandingPage
-        onGetWeather={weathergotten}
-        onCountryGotten={countryGotten}
-      />
-    );
-  }
+  return getWeatherSuccess ? (
+    <main className="Main">
+      <LeftSectionContainer weatherData={weatherData} />
+      <RightSectionContainer location={`${weatherData.name}, ${countryName}`} />
+    </main>
+  ) : (
+    <LandingPage onGetWeather={weathergotten} onCountryGotten={countryGotten} />
+  );
 };
 export default OverallContainer;
