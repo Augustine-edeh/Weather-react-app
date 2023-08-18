@@ -12,7 +12,7 @@ const LeftSection = (props) => {
       <div className="Left-Section__top">
         <Title />
         <Icon />
-        <div class="Left-section__flex">
+        <div className="Left-section__flex">
           <Temperature temperature={props.weatherData.main.temp} />
           <TemperatureDescription
             temperatureDescription={props.weatherData.weather[0].description}

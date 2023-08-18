@@ -3,9 +3,9 @@ import geoIcon from "../../Icons/geo-alt.svg";
 
 const Location = (props) => {
   return (
-    <div class="Location">
+    <div className="Location">
       <img src={geoIcon} alt="geo-icon" />
-      <span class="city">{props.location}</span>
+      <span className="city">{props.location}</span>
     </div>
   );
 };

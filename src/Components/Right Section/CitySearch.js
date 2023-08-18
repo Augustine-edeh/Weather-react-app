@@ -2,9 +2,9 @@ import "./CitySearch.css";
 
 const CitySearch = () => {
   return (
-    <div class="CitySearch">
+    <div className="CitySearch">
       <form>
-        <input type="text" class="" id="" />
+        <input type="text" className="" id="" />
         <button>Search</button>
       </form>
     </div>
