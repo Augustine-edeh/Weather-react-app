@@ -5,7 +5,7 @@ import LandingPage from "../Landing Page/LandingPage";
 import "./OverallContainer.css";
 
 const OverallContainer = (props) => {
-  const [weatherData, setWeatherData] = useState({});
+  const [weatherData, setWeatherData] = useState();
   const [countryName, setCountryName] = useState("");
 
   const weathergotten = (data) => {

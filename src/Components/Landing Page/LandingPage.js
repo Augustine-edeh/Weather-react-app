@@ -5,9 +5,9 @@ const LandingPage = (props) => {
   // || API Key
   const APIKEY = "3ad3ba1e7be894670b88f65bf82f63d9";
   // || Declaring state value for Weather Data
-  const [weatherData, setWeatherData] = useState({});
+  const [weatherData, setWeatherData] = useState();
   // || Declaring state value for city value
-  const [cityValue, setCityValue] = useState("");
+  const [enteredValue, setEnteredValue] = useState("");
 
   // || Prevent default-form-submission function
   const preventFormSubmit = () => {
@@ -78,12 +78,12 @@ const LandingPage = (props) => {
     preventFormSubmit();
 
     // || Fetching weather data
-    let cityWeatherURL = `https://api.openweathermap.org/data/2.5/weather?q=${cityValue}&appid=${APIKEY}&units=metric`;
+    let cityWeatherURL = `https://api.openweathermap.org/data/2.5/weather?q=${enteredValue}&appid=${APIKEY}&units=metric`;
     fetch(cityWeatherURL)
       .then((response) => response.json())
       .then((dataRetrieved) => {
         // || Two way binding for the city search input value
-        setCityValue("");
+        setEnteredValue("");
         setWeatherData(dataRetrieved);
         console.log(dataRetrieved);
         let countryAlphaCode = dataRetrieved.sys.country;
@@ -103,7 +103,7 @@ const LandingPage = (props) => {
       })
       .catch((error) => {
         // || Two way binding for the city search input value
-        setCityValue("");
+        setEnteredValue("");
       });
   };
   return (
@@ -113,11 +113,11 @@ const LandingPage = (props) => {
       <section className="lower-sect">
         <form className="city-search__form">
           <input
-            value={cityValue}
+            value={enteredValue}
             type="text"
             className="input"
             placeholder="Enter city name"
-            onChange={(event) => setCityValue(event.target.value)}
+            onChange={(event) => setEnteredValue(event.target.value)}
           />
           <button
             type="submit"
