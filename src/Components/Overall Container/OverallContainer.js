@@ -19,12 +19,20 @@ const OverallContainer = (props) => {
     setCountryName(countryData);
   };
 
+  const weatherHandler = (arg) => {
+    setWeatherData(arg);
+    console.log("In the OverAllContainer!!", arg);
+  };
+
   const [getWeatherSuccess, setGetWeatherSuccess] = useState(false);
 
   return getWeatherSuccess ? (
     <main className="Main">
       <LeftSectionContainer weatherData={weatherData} />
-      <RightSectionContainer location={`${weatherData.name}, ${countryName}`} />
+      <RightSectionContainer
+        location={`${weatherData.name}, ${countryName}`}
+        weather={weatherHandler}
+      />
     </main>
   ) : (
     <Home onGetWeather={weathergotten} onCountryGotten={countryGotten} />

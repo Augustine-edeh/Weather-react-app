@@ -5,7 +5,7 @@ import "./RightSectionContainer.css";
 const RightSectionContainer = (props) => {
   return (
     <section className="Right-section">
-      <CitySearch />
+      <CitySearch logger={props.weather} />
       <ErrorMessage />
       <Location location={props.location} />
     </section>
