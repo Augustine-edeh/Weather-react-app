@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./LandingPage.css";
+import "./Home.css";
 
 const LandingPage = (props) => {
   // || API Key

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import LeftSectionContainer from "../Left Section/LeftSectionContainer";
 import RightSectionContainer from "../Right Section/RightSectionContainer";
-import LandingPage from "../Landing Page/LandingPage";
+import Home from "../Home/Home";
 import "./OverallContainer.css";
 
 const OverallContainer = (props) => {
@@ -27,7 +27,7 @@ const OverallContainer = (props) => {
       <RightSectionContainer location={`${weatherData.name}, ${countryName}`} />
     </main>
   ) : (
-    <LandingPage onGetWeather={weathergotten} onCountryGotten={countryGotten} />
+    <Home onGetWeather={weathergotten} onCountryGotten={countryGotten} />
   );
 };
 export default OverallContainer;
