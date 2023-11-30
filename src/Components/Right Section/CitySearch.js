@@ -3,9 +3,9 @@ import "./CitySearch.css";
 const CitySearch = () => {
   return (
     <div className="CitySearch">
-      <form>
+      <form onSubmit={(e) => e.preventDefault()}>
         <input type="text" className="" id="" />
-        <button>Search</button>
+        <button>22Search</button>
       </form>
     </div>
   );
