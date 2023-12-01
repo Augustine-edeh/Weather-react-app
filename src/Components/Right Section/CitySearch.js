@@ -26,6 +26,18 @@ const CitySearch = (props) => {
         return response.json();
       })
       .then((weatherData) => {
+        let countryAlphaCode = weatherData.sys.country;
+        fetch(`https://restcountries.com/v3.1/alpha/${countryAlphaCode}`)
+          .then((response) => response.json())
+          .then((data) => {
+            props.onUpdateCountry(data[0].name.common);
+
+            // "http://openweathermap.org/img/w/02n.png"
+
+            // console.log(data[0].name.common);
+            // || Lifting up the country-name state value to the OverallContainer component
+            // props.onCountryGotten(data[0].name.common);
+          });
         props.logger(weatherData);
         console.log(weatherData);
       });
