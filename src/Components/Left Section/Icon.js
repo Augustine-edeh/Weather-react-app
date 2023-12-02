@@ -1,5 +1,4 @@
 import "./Icon.css";
-import weatherIcon from "../../Icons/cloud-sun.svg";
 const Icon = ({ src }) => {
   return (
     <div className="Icon">
