@@ -5,8 +5,6 @@ import Temperature from "./Temperature";
 import TemperatureDescription from "./TemperatureDescription";
 import AdditionalInformation from "./AdditionalInformation";
 const LeftSection = (props) => {
-  // console.log(props.weatherData);
-
   return (
     <>
       <section className="Left-section">
