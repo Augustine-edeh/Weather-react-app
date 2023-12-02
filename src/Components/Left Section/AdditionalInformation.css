@@ -5,11 +5,17 @@
   gap: 0.05rem;
   border-top: 0.1rem solid grey;
 }
+.AdditionalInformation .data {
+  font-size: 1.4rem;
+  font-weight: 500;
+}
 .flex-elements {
   display: grid;
   place-content: center;
   /* background: #f4f9ff; */
+  text-align: center;
   flex: 1;
+  gap: 0.4rem;
 }
 .flex-elements._1st {
   border-right: 0.1rem solid grey;

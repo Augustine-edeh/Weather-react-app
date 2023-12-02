@@ -1,9 +1,9 @@
-.LandingPage {
+.Home {
   background: #fff;
   border-radius: 0.8rem;
   width: 40rem;
 }
-.LandingPage__title {
+.Home__title {
   font-size: 1.5rem;
   padding: 1.5rem 0 0 2rem;
   color: #29a5e8;

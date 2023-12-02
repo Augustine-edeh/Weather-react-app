@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./Home.css";
 
-const LandingPage = (props) => {
+const Home = (props) => {
   // || API Key
   const APIKEY = "3ad3ba1e7be894670b88f65bf82f63d9";
   // || Declaring state value for Weather Data
@@ -107,8 +107,8 @@ const LandingPage = (props) => {
       });
   };
   return (
-    <section className="LandingPage">
-      <div className="LandingPage__title">Weather App</div>
+    <section className="Home">
+      <div className="Home__title">Weather App</div>
       <hr className="hr-1" />
       <section className="lower-sect">
         <form className="city-search__form">
@@ -143,4 +143,4 @@ const LandingPage = (props) => {
     </section>
   );
 };
-export default LandingPage;
+export default Home;

@@ -4,9 +4,13 @@ const AdditionalInformation = (props) => {
   return (
     <div className="AdditionalInformation">
       <div className="flex-elements _1st">
-        ({props.windSpeed}Km/hr) Windspeed
+        <span className="data">{props.windSpeed}Km/hr</span>
+        <span>Windspeed</span>
       </div>
-      <div className="flex-elements">({props.humidity}%) Humidity</div>
+      <div className="flex-elements">
+        <span className="data">{props.humidity}%</span>
+        <span>Humidity</span>
+      </div>
     </div>
   );
 };
