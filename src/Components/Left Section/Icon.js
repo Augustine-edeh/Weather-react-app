@@ -1,9 +1,12 @@
 import "./Icon.css";
 import weatherIcon from "../../Icons/cloud-sun.svg";
-const Icon = () => {
+const Icon = ({ src }) => {
   return (
     <div className="Icon">
-      <img src={weatherIcon} alt="weather icon" />
+      <img
+        src={`http://openweathermap.org/img/w/${src}.png`}
+        alt="weather icon"
+      />
     </div>
   );
 };
