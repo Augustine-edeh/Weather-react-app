@@ -28,11 +28,19 @@ const OverallContainer = (props) => {
     setCountryName(country);
   };
 
+  const backActionHandler = (bol) => {
+    setGetWeatherSuccess(bol);
+    console.log("In the OverAllContainer");
+  };
+
   const [getWeatherSuccess, setGetWeatherSuccess] = useState(false);
 
   return getWeatherSuccess ? (
     <main className="Main">
-      <LeftSectionContainer weatherData={weatherData} />
+      <LeftSectionContainer
+        weatherData={weatherData}
+        onBackAction={backActionHandler}
+      />
       <RightSectionContainer
         location={`${weatherData.name}, ${countryName}`}
         onUpdateCountryName={updateCountryHandler}

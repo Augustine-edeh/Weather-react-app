@@ -1,10 +1,14 @@
 import "./Title.css";
 
-const Title = () => {
+const Title = ({ onBack }) => {
+  const backAction = () => {
+    // alert("Back action!");
+    onBack(false);
+  };
   return (
     <>
       <div className="Title">
-        <span className="BackButton">
+        <span className="BackButton" onClick={backAction}>
           {
             <svg
               xmlns="http://www.w3.org/2000/svg"
