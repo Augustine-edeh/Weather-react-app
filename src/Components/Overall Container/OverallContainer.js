@@ -48,7 +48,9 @@ const OverallContainer = (props) => {
       />
     </main>
   ) : (
-    <Home onGetWeather={weathergotten} onCountryGotten={countryGotten} />
+    <main>
+      <Home onGetWeather={weathergotten} onCountryGotten={countryGotten} />
+    </main>
   );
 };
 export default OverallContainer;
