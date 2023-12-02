@@ -42,7 +42,7 @@ const Title = () => {
         </span>
 
         <span>
-          <h1 className="Title"> Weather</h1>
+          <h1 className="Title"> Weather App</h1>
         </span>
       </div>
     </>
