@@ -6,7 +6,7 @@
   justify-content: center;
   align-items: center;
   flex: 1;
-  background: green;
+  /* background: green; */
   padding-top: 0.5rem;
 }
 .Temperature p {
