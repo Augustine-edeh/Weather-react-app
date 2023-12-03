@@ -1,6 +1,6 @@
 import "./ErrorMessage.css";
 
-const ErrorMessage = () => {
-  return <div className="ErrorMessage">ErrorMessage</div>;
+const ErrorMessage = ({ errMessage }) => {
+  return <div className="ErrorMessage">{errMessage}</div>;
 };
 export default ErrorMessage;

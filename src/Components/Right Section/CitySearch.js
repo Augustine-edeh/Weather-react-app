@@ -7,6 +7,7 @@ const CitySearch = (props) => {
 
   const onChangeHandler = (e) => {
     setEnteredCity((prev) => e.target.value);
+    props.onError(false);
     console.log(enteredCity);
   };
 
@@ -17,25 +18,44 @@ const CitySearch = (props) => {
     // || Search for city weather
     let cityWeatherURL = `https://api.openweathermap.org/data/2.5/weather?q=${enteredCity}&appid=${APIKEY}&units=metric`;
 
-    fetch(cityWeatherURL)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("There was an error");
-        }
-        return response.json();
-      })
-      .then((weatherData) => {
-        let countryAlphaCode = weatherData.sys.country;
-        fetch(`https://restcountries.com/v3.1/alpha/${countryAlphaCode}`)
-          .then((response) => response.json())
-          .then((data) => {
-            props.onUpdateCountry(data[0].name.common);
+    try {
+      const response = await fetch(cityWeatherURL);
 
-            // || Lifting up the country-name state value to the OverallContainer component
-          });
-        props.logger(weatherData);
-        console.log(weatherData);
-      });
+      if (!response.ok) {
+        if (response.status === 404) {
+          throw new Error("City not found");
+        } else {
+          throw new Error(
+            "Failed to fetch weather data. Check your internet and try again"
+          );
+        }
+      }
+
+      const weatherData = await response.json();
+      const countryAlphaCode = weatherData.sys.country;
+
+      const countryResponse = await fetch(
+        `https://restcountries.com/v3.1/alpha/${countryAlphaCode}`
+      );
+
+      if (!countryResponse.ok) {
+        if (countryResponse.status === 404) {
+          throw new Error("Country not found");
+        } else {
+          throw new Error("Failed to fetch country data");
+        }
+      }
+
+      const countryData = await countryResponse.json();
+      props.onUpdateCountry(countryData[0].name.common);
+      props.logger(weatherData);
+      console.log(weatherData);
+    } catch (error) {
+      // Handle errors here
+      console.error(error);
+      props.onErrorMessage(error.message);
+      props.onError(true);
+    }
   };
 
   return (
