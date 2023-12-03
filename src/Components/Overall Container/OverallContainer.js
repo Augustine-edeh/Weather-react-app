@@ -11,28 +11,23 @@ const OverallContainer = (props) => {
   // const [isError, setIsError] = useState(false);
 
   const weathergotten = (data) => {
-    console.log(data);
     setWeatherData(data);
     setGetWeatherSuccess(true);
   };
 
   const countryGotten = (countryData) => {
-    console.log(countryData);
     setCountryName(countryData);
   };
 
   const weatherHandler = (arg) => {
     setWeatherData(arg);
-    console.log("In the OverAllContainer!!", arg);
   };
   const updateCountryHandler = (country) => {
-    console.log("country name changed", country);
     setCountryName(country);
   };
 
   const backActionHandler = (bol) => {
     setGetWeatherSuccess(bol);
-    console.log("In the OverAllContainer");
   };
 
   // const isErrorHandler = (bol) => setIsError(bol);

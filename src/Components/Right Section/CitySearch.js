@@ -8,7 +8,6 @@ const CitySearch = (props) => {
   const onChangeHandler = (e) => {
     setEnteredCity((prev) => e.target.value);
     props.onError(false);
-    console.log(enteredCity);
   };
 
   const CitySearchHandler = async (e) => {
@@ -58,7 +57,6 @@ const CitySearch = (props) => {
       };
       props.onUpdateCountry(countryName);
       props.logger(weatherData);
-      console.log(weatherData);
     } catch (error) {
       // Handle errors here
       console.error(error);

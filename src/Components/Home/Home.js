@@ -24,7 +24,6 @@ const Home = (props) => {
     // || Callback function for successful retrieval of device position
     const locationSuccessCallback = (position) => {
       const { latitude, longitude } = position.coords;
-      console.log(latitude, longitude);
 
       const locationWeatherURL = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${APIKEY}&units=metric`;
 
@@ -33,13 +32,11 @@ const Home = (props) => {
         .then((response) => response.json())
         .then((data) => {
           // setWeatherData(data);
-          console.log(data);
           let countryAlphaCode = data.sys.country;
           // || Getting the country name
           fetch(`https://restcountries.com/v3.1/alpha/${countryAlphaCode}`)
             .then((response) => response.json())
             .then((data) => {
-              console.log(data[0].name.common);
               // || Lifting up the country-name state value to the OverallContainer component
               props.onCountryGotten(data[0].name.common);
             });
@@ -49,7 +46,7 @@ const Home = (props) => {
             props.onGetWeather(data);
           }
         })
-        .catch((error) => console.log(error));
+        .catch((error) => console.error(error));
     };
 
     // || Callback function for unsuccessful retrieval of device position
@@ -100,7 +97,6 @@ const Home = (props) => {
       // Two-way binding for the city search input value
       setEnteredValue("");
       // setWeatherData(dataRetrieved);
-      console.log(weatherData);
       const cityName = weatherData.name;
       const countryAlphaCode = weatherData.sys.country;
 
@@ -119,7 +115,6 @@ const Home = (props) => {
       }
 
       const countryData = await countryResponse.json();
-      console.log(countryData[0].name.common);
       const nameOfCountry = countryData[0].name.common;
       const countryName = () => {
         if (cityName.toLowerCase() === nameOfCountry.toLowerCase()) {
