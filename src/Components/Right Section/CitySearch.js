@@ -71,7 +71,7 @@ const CitySearch = (props) => {
     <div className="CitySearch">
       <form onSubmit={CitySearchHandler}>
         <input type="text" value={enteredCity} onChange={onChangeHandler} />
-        <button>22Search</button>
+        <button>Search</button>
       </form>
     </div>
   );
