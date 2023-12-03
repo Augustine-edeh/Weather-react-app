@@ -7,6 +7,8 @@ import "./OverallContainer.css";
 const OverallContainer = (props) => {
   const [weatherData, setWeatherData] = useState();
   const [countryName, setCountryName] = useState("");
+  const [getWeatherSuccess, setGetWeatherSuccess] = useState(false);
+  // const [isError, setIsError] = useState(false);
 
   const weathergotten = (data) => {
     console.log(data);
@@ -33,7 +35,7 @@ const OverallContainer = (props) => {
     console.log("In the OverAllContainer");
   };
 
-  const [getWeatherSuccess, setGetWeatherSuccess] = useState(false);
+  // const isErrorHandler = (bol) => setIsError(bol);
 
   return getWeatherSuccess ? (
     <main className="Main">
@@ -45,11 +47,16 @@ const OverallContainer = (props) => {
         location={`${weatherData.name}${countryName}`}
         onUpdateCountryName={updateCountryHandler}
         weather={weatherHandler}
+        // onIsError={isErrorHandler}
       />
     </main>
   ) : (
     <main>
-      <Home onGetWeather={weathergotten} onCountryGotten={countryGotten} />
+      <Home
+        onGetWeather={weathergotten}
+        onCountryGotten={countryGotten}
+        // isErr={isError}
+      />
     </main>
   );
 };

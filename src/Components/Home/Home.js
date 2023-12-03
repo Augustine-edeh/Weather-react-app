@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ErrorMessage from "../Right Section/ErrorMessage";
 import "./Home.css";
 
 const Home = (props) => {
@@ -8,6 +9,8 @@ const Home = (props) => {
   const [weatherData, setWeatherData] = useState();
   // || Declaring state value for city value
   const [enteredValue, setEnteredValue] = useState("");
+  const [isError, setIsError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   // || Prevent default-form-submission function
   const preventFormSubmit = () => {
@@ -29,7 +32,7 @@ const Home = (props) => {
       fetch(locationWeatherURL)
         .then((response) => response.json())
         .then((data) => {
-          setWeatherData(data);
+          // setWeatherData(data);
           console.log(data);
           let countryAlphaCode = data.sys.country;
           // || Getting the country name
@@ -73,38 +76,72 @@ const Home = (props) => {
     );
   };
 
-  const CitySearchHandler = () => {
+  const CitySearchHandler = async () => {
     // || Preventing the default submit event of the search-form
     preventFormSubmit();
 
     // || Fetching weather data
     let cityWeatherURL = `https://api.openweathermap.org/data/2.5/weather?q=${enteredValue}&appid=${APIKEY}&units=metric`;
-    fetch(cityWeatherURL)
-      .then((response) => response.json())
-      .then((dataRetrieved) => {
-        // || Two way binding for the city search input value
-        setEnteredValue("");
-        setWeatherData(dataRetrieved);
-        console.log(dataRetrieved);
-        let countryAlphaCode = dataRetrieved.sys.country;
-        // || Getting the country name
-        fetch(`https://restcountries.com/v3.1/alpha/${countryAlphaCode}`)
-          .then((response) => response.json())
-          .then((data) => {
-            console.log(data[0].name.common);
-            // || Lifting up the country name value to the OverallContainer component
-            props.onCountryGotten(data[0].name.common);
-          });
 
-        // || Lifting up the weatherData state only when the there is no error fetching the weather
-        if (dataRetrieved.cod === 200) {
-          props.onGetWeather(dataRetrieved);
+    try {
+      const response = await fetch(cityWeatherURL);
+
+      if (!response.ok) {
+        if (response.status === 404) {
+          throw new Error("City not found");
+        } else {
+          throw new Error(
+            "Failed to fetch weather data. Check your internet & try again"
+          );
         }
-      })
-      .catch((error) => {
-        // || Two way binding for the city search input value
-        setEnteredValue("");
-      });
+      }
+
+      const weatherData = await response.json();
+      // Two-way binding for the city search input value
+      setEnteredValue("");
+      // setWeatherData(dataRetrieved);
+      console.log(weatherData);
+      const cityName = weatherData.name;
+      const countryAlphaCode = weatherData.sys.country;
+
+      // let countryAlphaCode = weatherData.sys.country;
+
+      const countryResponse = await fetch(
+        `https://restcountries.com/v3.1/alpha/${countryAlphaCode}`
+      );
+
+      if (!countryResponse.ok) {
+        if (countryResponse.status === 404) {
+          throw new Error("Country not found");
+        } else {
+          throw new Error("Failed to fetch country data");
+        }
+      }
+
+      const countryData = await countryResponse.json();
+      console.log(countryData[0].name.common);
+      const nameOfCountry = countryData[0].name.common;
+      const countryName = () => {
+        if (cityName.toLowerCase() === nameOfCountry.toLowerCase()) {
+          return "";
+        }
+        return `, ${nameOfCountry}`;
+      };
+      // Lifting up the country name value to the OverallContainer component
+      props.onCountryGotten(countryName);
+
+      // Lifting up the weatherData state only when there is no error fetching the weather
+      if (weatherData.cod === 200) {
+        props.onGetWeather(weatherData);
+      }
+    } catch (error) {
+      // Handle errors here
+      console.error(error);
+      // Two-way binding for the city search input value
+      setEnteredValue("");
+      setErrorMessage(error.message);
+      setIsError(true);
+    }
   };
   return (
     <section className="Home">
@@ -117,7 +154,10 @@ const Home = (props) => {
             type="text"
             className="input"
             placeholder="Enter city name"
-            onChange={(event) => setEnteredValue(event.target.value)}
+            onChange={(event) => {
+              setEnteredValue(event.target.value);
+              setIsError(false);
+            }}
           />
           <button
             type="submit"
@@ -127,6 +167,8 @@ const Home = (props) => {
             Search
           </button>
         </form>
+
+        {isError ? <ErrorMessage errMessage={errorMessage} /> : ""}
         <div className="divider">
           <hr className="hr-2" />
           <span>or</span>
