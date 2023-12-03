@@ -26,14 +26,16 @@ const CitySearch = (props) => {
           throw new Error("City not found");
         } else {
           throw new Error(
-            "Failed to fetch weather data. Check your internet and try again"
+            "Failed to fetch weather. Check your internet & try again"
           );
         }
       }
 
       const weatherData = await response.json();
+      const cityName = weatherData.name;
       const countryAlphaCode = weatherData.sys.country;
 
+      // || Fetching country name(for location component)
       const countryResponse = await fetch(
         `https://restcountries.com/v3.1/alpha/${countryAlphaCode}`
       );
@@ -47,7 +49,14 @@ const CitySearch = (props) => {
       }
 
       const countryData = await countryResponse.json();
-      props.onUpdateCountry(countryData[0].name.common);
+      const nameOfCountry = countryData[0].name.common;
+      const countryName = () => {
+        if (cityName.toLowerCase() === nameOfCountry.toLowerCase()) {
+          return "";
+        }
+        return `, ${nameOfCountry}`;
+      };
+      props.onUpdateCountry(countryName);
       props.logger(weatherData);
       console.log(weatherData);
     } catch (error) {

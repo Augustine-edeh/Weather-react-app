@@ -42,7 +42,7 @@ const OverallContainer = (props) => {
         onBackAction={backActionHandler}
       />
       <RightSectionContainer
-        location={`${weatherData.name}, ${countryName}`}
+        location={`${weatherData.name}${countryName}`}
         onUpdateCountryName={updateCountryHandler}
         weather={weatherHandler}
       />
