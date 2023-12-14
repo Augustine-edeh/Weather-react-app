@@ -1,6 +1,6 @@
-**Project Title: ReactWeather Explorer**
+## Wearther Sage Explorer**
 
-**Description:**
+ ## **Description:**
 
 Welcome to Weather-Sage, your go-to destination for exploring real-time weather information for cities around the globe! This ReactJS-powered weather app provides a user-friendly interface to effortlessly search and retrieve detailed weather updates for any city you desire.
 
